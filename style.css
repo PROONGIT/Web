@@ -1,0 +1,248 @@
+/* Importer un font-family depuis internet */
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+/* Utiliser un font-family téléchargé localement */
+
+@font-face{
+    font-family: "DM_Serif";
+    src: url(./assets/fonts/DM_Serif_Display/DMSerifDisplay-Regular.ttf);
+}
+
+/* L'étoile donne du style à TOUS les éléments
+*{
+  margin: 0;
+  padding: 0;
+  border: 2px solid red;
+} */
+
+
+body{
+    /* Utiliser le font-family téléchargé */
+    font-family: DM_Serif;
+    font-weight: 100;
+    background: url(./assets/img/bg_2.jpg) #3ef1d9 center/cover;
+    /* VH = viewport height (% de la taille totale de l'écran) 
+    Le body va prendre ici au minimum la totalité de la hauteur de l'écran*/
+    min-height: 100vh;
+}
+
+h1{
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 4px;
+    font-size: 2.5rem;
+    color: rgb(238, 12, 99);
+    text-decoration: underline;
+    text-shadow: 4px 1px 5px rgb(187, 180, 180);
+    /* Pour utiliser le font-family par @import */
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+p{
+    text-align: justify;
+    color: rgb(126, 7, 7);
+    background: #ece75467;
+    border: 2px solid rgb(0, 132, 255);
+    border-radius: 10px;
+    margin: auto;
+    max-width: 90%;
+    padding: 15px;
+}
+
+main{
+    min-height: 500px;
+    width: 90%;
+    background: rgba(216, 103, 173, 0.692);
+    margin: 0 auto;
+    padding: 15px;
+    border: 2px solid rgb(0, 132, 255);
+    border-radius: 15px;
+    box-shadow: -6px 8px 13px 0px rgba(248, 232, 144, 0.397);
+}
+
+h1{
+    margin: 0 0 15px 0;
+}
+
+h2{
+    margin: 0;
+}
+
+.flexbox, .grid, .absolute{
+    border: 2px solid rgb(0, 255, 179);
+    border-radius: 10px;
+    margin-top: 20px;
+    padding: 10px;
+    min-height: 150px;
+}
+
+/* FLEXBOX */
+/* Sert a répartir équitablement des éléments sur la page */
+
+.flexbox ul{
+    display: flex;
+    padding: 0;
+    justify-content: space-around;
+}
+
+.flexbox li{
+    height: 160px;
+    width: 160px;
+    background: #3ef1d9;
+    border: 2px solid #ec54a067;
+    border-radius: 15px;
+    list-style: none;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* GRID */
+
+.grid-container{
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+.grid img{
+    max-width: 80%;
+    min-height: 90%;
+    display: block;
+    margin: 20px auto;
+}
+
+form{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 33% 34% 33%;
+    grid-template-areas:
+    "a1 a2"
+    "b1 b1"
+    "c1 c2";
+}
+
+input,
+textarea {
+  margin: 5px;
+  border: 1px solid darkcyan;
+  border-radius: 5px;
+  padding: 10px;
+  font-family: "DM_Serif";
+  font-size: 1.5rem;
+}
+
+textarea {
+    grid-area: b1;
+    max-height: 100px;
+    resize: none;
+}
+
+#btn-submit{
+    grid-area: c2;
+    background: darkcyan;
+    cursor: pointer;
+    transition: 0.2ms;
+}
+
+#btn-submit:hover{
+    background: blue;
+    color: white;
+    height: 102%;
+    transform: translateY(-5%);
+}
+
+/* ABSOLUTE  */
+/* Sans élément en Relative, de base, l'élément en absolute l'est par rapport au Body  */
+/* Il faut mettre une position relative au parent pour contraindre l'élément en absolute dans ses frontières  */
+
+.absolute{
+    position: relative;
+}
+
+#circle_1{
+    background: rgb(135, 235, 222);
+    height: 90px;
+    width: 90px;
+    position: absolute;
+    border-radius: 150px;
+    top: -20px;
+    right: -20px;
+}
+
+#circle_2{
+    background: rgba(149, 118, 179, 0.418);
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    border-radius: 100px;
+    left: 50%;
+    transform: translateX(50%);
+    bottom: 40%;
+}
+
+#circle_3{
+    background: rgba(0, 139, 139, 0.493);
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    border-radius: 100px;
+    left: 28%;
+    bottom: 58%;
+}
+
+#circle_4{
+    background: rgba(255, 0, 149, 0.418);
+    height: 35px;
+    width: 35px;
+    position: absolute;
+    border-radius: 100px;
+    left: 10%;
+    bottom: 28%;
+}
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 900px) {
+    .grid-container{
+        display: block;
+    }
+
+    .grid img{
+        max-width: 40%;
+        height: 20%;
+    }
+}
+
+@media screen and (max-width: 610px) {
+    .flexbox ul{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .flexbox li {
+        height: 60px;
+        width: 100%;
+        margin: 5px;
+        font-size: 1.5rem;
+    }
+
+    form{
+        grid-template-rows: 25% 25% 25% 25%;
+        grid-template-columns: 100%;
+        grid-template-areas: 
+        'a1'
+        'a2'
+        'b1'
+        'c2';
+        }
+
+    input, textarea {
+        font-size: 1rem;
+    }
+        
+}
